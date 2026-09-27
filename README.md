@@ -28,11 +28,12 @@
 - GPU: RTX 4090
 
 ## セットアップ
+
 ```
-git clone https://github.com/OkaRitsu/so101-arm-imitation-learning.git  --recursive
-cd so101-arm-imitation-learning.git
-uv sync
-uv sync --extra training  # 学習用
+git clone https://github.com/OkaRitsu/so101-arm-turn-up-drone-il.git  --recursive
+cd so101-arm-turn-up-drone-il
+uv sync # テレオペ・推論環境
+pip install -e .[training]  # 学習環境
 ```
 
 ### 環境変数
@@ -127,6 +128,7 @@ https://huggingface.co/spaces/lerobot/visualize_dataset で　`YOUR_HF_USERNAME/
 学習したモデルを使って実機でロールアウトします。
 
 ```bash
+wandb login
 ./scripts/rollout-smolvla.sh
 ```
 

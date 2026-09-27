@@ -9,12 +9,8 @@ if [[ "$RUN_NAME" == -* || ! "$RUN_NAME" =~ ^[a-zA-Z0-9][a-zA-Z0-9_-]*$ ]]; then
 fi
 if [[ $# -gt 0 ]]; then shift; fi
 
-# LeRobot resolves the first policy.path, unlike ordinary CLI overrides.
-if ! has_cli_option --policy.path "$@"; then
-  set -- --policy.path=lerobot/smolvla_base "$@"
-fi
-
-uv runlerobot-train \
+lerobot-train \
+  --policy.type=smolvla \
   --policy.device=cuda \
   "--policy.repo_id=$HF_USERNAME/smolvla-turn-up-drone" \
   "--dataset.repo_id=$HF_USERNAME/so101-turn-up-drone" \

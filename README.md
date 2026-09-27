@@ -117,9 +117,10 @@ https://huggingface.co/spaces/lerobot/visualize_dataset で　`YOUR_HF_USERNAME/
 
 ## 学習
 
-学習には、Nvidia の GPU を使用します。
+学習には、Nvidia の GPU を使用します。学習のロギングには wandb を使用するので、ログインしてください。学習モデルのアップロードする場合は、Huggingface ユーザーを環境変数に登録してください（`HF_USERNAME`, `HF_TOKEN`）。
 
 ```
+wandb login
 ./scripts/train-smolvla.sh
 ```
 
@@ -128,7 +129,6 @@ https://huggingface.co/spaces/lerobot/visualize_dataset で　`YOUR_HF_USERNAME/
 学習したモデルを使って実機でロールアウトします。
 
 ```bash
-wandb login
 ./scripts/rollout-smolvla.sh
 ```
 
